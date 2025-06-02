@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="text-gray-400 bg-gray-900 body-font overflow-hidde">
+    <div class="container px-5 py-24 mx-auto">
+
+        <!-- <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                <img src="{{product.main_image.url}}" class="d-block w-auto h-50" alt="...">
+                </div>
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="false"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div> -->
+
+
+        <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+            <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{product.pr_name}}</h1>
+            <div class="flex mb-4">
+                <a class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">Description</a>
+            </div>
+            <p class="leading-relaxed mb-4">{{product.descrip}}.</p>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            {{product.new_comment}}
+            {{ forms.as_p }}
+            <input type="submit" value="To add comment">
+        </form>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

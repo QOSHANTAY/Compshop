@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="wrapper">
+    <form method="post">
+        {% csrf_token %}
+        <h2>Registration</h2>
+        <div class="input-field">
+            <input type="text" required name="username">
+            <label>Enter your Name</label>
+        </div>
+        <div class="input-field">
+            <input type="text" required name="email" >
+            <label>Enter your email</label>
+        </div>
+        <div class="input-field">
+            <input type="password" name="password1"  required>
+            <label>Enter your password</label>
+        </div>
+        <div class="input-field">
+            <input type="password"  name="password2" required>
+            <label>Confirm your password</label>
+        </div>
+        <br>
+        <button type="submit" value="Registrate">Sign up</button>
+    </form>
+</div>
+{% endblock %}

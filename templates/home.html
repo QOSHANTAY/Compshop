@@ -1,0 +1,8 @@
+{% for i in prod %}
+    <h1>{{i.pr_name}}</h1>
+    <p>{{i.brand}}</p>
+    <p>{{i.category}}</p>
+    <img src="{{i.main_image.url}}" alt="">
+
+    <br>
+{% endfor %}
