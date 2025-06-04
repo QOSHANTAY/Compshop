@@ -4,7 +4,7 @@
 <section class="text-gray-400 bg-gray-900 body-font overflow-hidde">
     <div class="container px-5 py-24 mx-auto">
 
-        <!-- <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                 <img src="{{product.main_image.url}}" class="d-block w-auto h-50" alt="...">
@@ -19,7 +19,7 @@
                 <span class="carousel-control-next-icon" aria-hidden="false"></span>
                 <span class="visually-hidden">Next</span>
             </button>
-        </div> -->
+        </div>
 
 
         <div class="lg:w-4/5 mx-auto flex flex-wrap">
@@ -30,11 +30,18 @@
             </div>
             <p class="leading-relaxed mb-4">{{product.descrip}}.</p>
         </div>
-
+        <br>
         <form method="post">
             {% csrf_token %}
-            {{product.new_comment}}
             {{ forms.as_p }}
+            {% for i in comments %}
+            <div>
+                <hr>
+                <p>{{i.author}}:       {{i.created_at}}</p>
+                <p>{{i.comment_text}}</p>
+                <hr>
+            </div>    
+            {% endfor %}
             <input type="submit" value="To add comment">
         </form>
 
