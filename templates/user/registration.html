@@ -1,16 +1,18 @@
-{% extends 'base.html' %}
 {% load static %}
 
 
-{% block content %}
+
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <div class="wrapper">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <h2>Registration</h2>
+        <!-- <h2>Registration</h2>
         <div class="input-field">
             <input type="text" required name="username">
             <label>Enter your Name</label>
+        </div>
+        <div class="input-field">
+            
         </div>
         <div class="input-field">
             <input type="text" required name="email" >
@@ -25,7 +27,8 @@
             <label>Confirm your password</label>
         </div>
         <br>
-        <button type="submit" value="Registrate">Sign up</button>
+        <button type="submit" value="Registrate">Sign up</button> -->
+        {{forms.as_p}}
+        <input type="submit" value="Registrate">
     </form>
 </div>
-{% endblock %}

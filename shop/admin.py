@@ -1,11 +1,12 @@
 from django.contrib import admin
-from .models import Brand,Category,Products,Comment
+from .models import Brand,Category,Products,Comment,CustomUser
 from django.db import models
 
 
 
 
 # Register your models here.
+admin.site.register(CustomUser)
 class BrandAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug':('brand_name',)

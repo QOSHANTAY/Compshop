@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from . import models
-from .forms import Registration,LoginForm,CommentForm
+from .forms import RegistrationForm,LoginForm,CommentForm
 from django.contrib.auth import login,logout,authenticate
 
 def homepage(request):
@@ -30,13 +30,13 @@ def detail(request,id):
 
 def registration(request):
     if request.method=='POST':
-        forms = Registration(request.POST)
+        forms = RegistrationForm(request.POST,request.FILES)
         if forms.is_valid():
             user = forms.save()
             login(request,user)
             return redirect('home')
     else:
-        forms = Registration
+        forms = RegistrationForm()
     return render(request,'user/registration.html',{'forms':forms})
 
 def log_out(request):
@@ -45,7 +45,7 @@ def log_out(request):
 
 def log_in(request):
     if request.method=='POST':
-        forms = LoginForm(request,request.POST)
+        forms = LoginForm(request,request.POST)   
         if forms.is_valid():
             user = forms.get_user()
             login(request,user)

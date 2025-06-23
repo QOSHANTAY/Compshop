@@ -1,8 +1,17 @@
 from django.db import models
 from django.utils.text import slugify
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+from config import settings
 
 # Create your models here.
+
+
+class CustomUser(AbstractUser):
+    phone_num = models.PositiveIntegerField(blank=True,null=True)
+    avatar = models.ImageField(upload_to='avatars/',blank=True,null=True)
+
+    def __str__(self):
+        return self.username
 
 class Products(models.Model):
     pr_name = models.CharField(max_length=250,verbose_name='Название товара:')
@@ -59,11 +68,10 @@ class Comment(models.Model):
     )
 
     author = models.ForeignKey(
-        User,
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         verbose_name='Автор коммента:'
 
     )
     def __str__(self):
         return f'{self.product.pr_name} - {self.comment_text[:20]}...'
-
