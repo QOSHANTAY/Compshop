@@ -43,10 +43,7 @@ CSS STRUCTURE:
 
 }
 
-.user{
-  width: 100px;
-  height: fit-content;
-}
+
 /* on mobile devices below 600px
  */
 @media screen and (max-width: 600px) {
