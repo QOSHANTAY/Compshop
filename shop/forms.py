@@ -11,7 +11,7 @@ class RegistrationForm(UserCreationForm):
 
 class LoginForm(AuthenticationForm):
     class Meta:
-        model = User
+        model = CustomUser
         fields = ['username','password']
 
 class CommentForm(ModelForm):
@@ -25,3 +25,16 @@ class CommentForm(ModelForm):
                 'rows':3
             }
         )}
+
+
+class UpdateUserForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ['avatar','password']
+
+class UpdateProfileForm(forms.ModelForm):
+    avatar = forms.ImageField(widget=forms.FileInput())
+
+    class Meta:
+        model = CustomUser
+        fields = ['avatar','password']

@@ -1,0 +1,13 @@
+<form method="post">
+    {% csrf_token %}
+    <div class="input-field">
+        <input type="file" name="avatar">
+        <label for="">Change your avatar</label>
+    </div>
+    <div class="input_field">
+        <input type="password" name="password">
+        <label for="">Change your password</label>
+    </div>
+    {{ forms.as_p }}
+    <button type="submit">Update your profile</button>
+</form>

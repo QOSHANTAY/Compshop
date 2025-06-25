@@ -209,9 +209,9 @@
                       
                       {% if user.is_authenticated %}
                       
-                        <p>{{user.username}}</p>
-                        <img class="user" src="{{user.avatar.url}}" style="width:40px; height:40px; border-radius: 30%;">
-                        <button class="inline-flex items-center bg-gray-800 border-0 py-0 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"><a href="{% url 'logout' %}">Logout</a>
+                        <p style="padding-right: 10px; padding-top: 5px;" >{{user.username}}</p>
+                        
+                        <button  class="inline-flex items-center bg-gray-800 border-0 py-0 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"><a href="{% url 'logout' %}">Logout</a>
                         </button>
                       <li class="pe-3">
                         {% else %}
@@ -220,6 +220,10 @@
                             <button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"><a href="{% url 'login' %}">Sign In</a>
                             </button>
                       </li>
+                      {% endif %}
+                      {% if user.avatar %}
+                          <img class="user" src="{{user.avatar.url}}" style="width:40px; height:40px; border-radius: 30%;">
+                      {% else %}
                       {% endif %}
                       
 

@@ -1,7 +1,13 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from . import models
-from .forms import RegistrationForm,LoginForm,CommentForm
-from django.contrib.auth import login,logout,authenticate
+from .forms import RegistrationForm,LoginForm,CommentForm,UpdateUserForm,UpdateProfileForm
+from django.contrib.auth import login,logout,authenticate,update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
+
+
 
 def homepage(request):
     products = models.Products.objects.all()
@@ -54,3 +60,23 @@ def log_in(request):
         forms = LoginForm
     return render(request,'user/login.html',{'forms':forms})
 
+
+@login_required
+def update_password_and_avatar(request):
+    if request.method=='POST':
+        avatar_form = UpdateUserForm(request.POST,instance=request.user)
+        password_form = UpdateProfileForm(request.POST,request.FILES,instance=request.user)
+
+        if avatar_form.is_valid() and password_form.is_valid():
+            avatar_form.save()
+            password_form.save()
+            update_session_auth_hash(request, password_form.user)  
+            return redirect('home')
+
+            # messages.success(request,'Congrats, you are updated!')
+            # return redirect('home')
+    else:
+        avatar_form = UpdateUserForm(instance=request.user)
+        password_form = UpdateProfileForm(request.POST,request.FILES,instance=request.user)
+    
+    return render(request,'update_profile.html',{'avatar_form':avatar_form,'password_form':password_form})
