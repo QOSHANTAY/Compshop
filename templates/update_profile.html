@@ -1,13 +1,17 @@
-<form method="post">
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="wrapper">
+    <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="input-field">
         <input type="file" name="avatar">
-        <label for="">Change your avatar</label>
+        <label style="padding-bottom: 10px;" for="">Change your avatar</label>
     </div>
     <div class="input_field">
         <input type="password" name="password">
-        <label for="">Change your password</label>
+        <label style="color: white;" for="">Change your password</label>
     </div>
-    {{ forms.as_p }}
-    <button type="submit">Update your profile</button>
-</form>
+    <button style="margin-top: 10px;" type="submit" >Update your profile</button>
+</form></div>
+

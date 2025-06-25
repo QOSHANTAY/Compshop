@@ -33,8 +33,6 @@ class UpdateUserForm(forms.ModelForm):
         fields = ['avatar','password']
 
 class UpdateProfileForm(forms.ModelForm):
-    avatar = forms.ImageField(widget=forms.FileInput())
-
     class Meta:
         model = CustomUser
         fields = ['avatar','password']

@@ -70,13 +70,11 @@ def update_password_and_avatar(request):
         if avatar_form.is_valid() and password_form.is_valid():
             avatar_form.save()
             password_form.save()
-            update_session_auth_hash(request, password_form.user)  
+            update_session_auth_hash(request, request.user)  
+            messages.success(request,'Congrats, you are updated!')
             return redirect('home')
-
-            # messages.success(request,'Congrats, you are updated!')
-            # return redirect('home')
     else:
         avatar_form = UpdateUserForm(instance=request.user)
-        password_form = UpdateProfileForm(request.POST,request.FILES,instance=request.user)
+        password_form = UpdateProfileForm(instance=request.user)
     
     return render(request,'update_profile.html',{'avatar_form':avatar_form,'password_form':password_form})

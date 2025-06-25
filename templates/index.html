@@ -215,25 +215,20 @@
                         </button>
                       <li class="pe-3">
                         {% else %}
-                            <button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"><a href="{% url 'reg' %}">Sign Up</a>
+                            <button style="padding-bottom: 10px;" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"><a href="{% url 'reg' %}">Sign Up</a>
                             </button>
                             <button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"><a href="{% url 'login' %}">Sign In</a>
                             </button>
-                      </li>
+                      </li> 
                       {% endif %}
                       {% if user.avatar %}
                           <img class="user" src="{{user.avatar.url}}" style="width:40px; height:40px; border-radius: 30%;">
                       {% else %}
                       {% endif %}
+                      <button style="padding-bottom: 10px;" class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"><a href="{% url 'update_pr' %}">Update your profile</a>
                       
 
-                      <li>
-                        <a href="cart.html">
-                          <svg class="cart">
-                            <use xlink:href="#cart"></use>
-                          </svg>
-                        </a>
-                      </li>
+                      
                     </ul>
                   </div>
                 </li>
